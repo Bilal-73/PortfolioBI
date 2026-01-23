@@ -327,7 +327,7 @@ export function Contact() {
                     href="mailto:acc.bilalimran@gmail.com"
                     className="text-foreground hover:text-primary transition-colors"
                   >
-                    acc.bilaimran@gmail.com
+                    acc.bilalimran@gmail.com
                   </a>
                 </div>
               </div>
