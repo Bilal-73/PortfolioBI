@@ -88,7 +88,7 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
-            <Button
+            {/* <Button
               size="lg"
               className="group relative overflow-hidden bg-primary hover:bg-primary/90 text-primary-foreground px-8"
               asChild
@@ -100,7 +100,23 @@ export function Hero() {
                 </span>
                 <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent opacity-0 group-hover:opacity-100 transition-opacity" />
               </a>
-            </Button>
+            </Button> */}
+
+
+            <Button
+  size="lg"
+  className="group relative overflow-hidden bg-primary hover:bg-primary/90 text-primary-foreground px-8"
+  asChild
+>
+  <a href="/resume.pdf" download>
+    <span className="relative z-10 flex items-center gap-2">
+      <Download className="w-4 h-4 transition-transform group-hover:-translate-y-1" />
+      Download Resume
+    </span>
+    <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent opacity-0 group-hover:opacity-100 transition-opacity" />
+  </a>
+</Button>
+
             <Button
               size="lg"
               variant="outline"

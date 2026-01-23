@@ -5,17 +5,18 @@ import { GraduationCap, Calendar, Award } from "lucide-react";
 const education = [
   {
     degree: "Bachelor of Science in Computer Science",
-    institution: "University of Engineering and Technology",
+    institution: "PMAS ARID University",
     location: "Lahore, Pakistan",
-    year: "2021 - 2025",
-    gpa: "3.8/4.0",
+    year: "2022 - 2026",
+    gpa: "3.89/4.0",
     achievements: [
       "Specialization in Artificial Intelligence",
-      "Dean's List - All Semesters",
+      "Scholarship",
       "Best Final Year Project Award",
-      "President of AI/ML Student Society",
+      "Runner Up for Coding Competition",
     ],
   },
+  
 ];
 
 const certifications = [

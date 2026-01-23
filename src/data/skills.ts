@@ -23,9 +23,10 @@ export interface Skill {
 export const skills: Skill[] = [
   // Programming Languages
   { name: "Python", level: 95, icon: Code2, category: "programming" },
-  { name: "TypeScript", level: 90, icon: Code2, category: "programming" },
+  { name: "React JS", level: 90, icon: Code2, category: "programming" },
   { name: "JavaScript", level: 88, icon: Code2, category: "programming" },
   { name: "SQL", level: 85, icon: Database, category: "programming" },
+  { name: "React Native", level: 85, icon: Database, category: "programming" },
   
   // AI/ML
   { name: "Machine Learning", level: 92, icon: Brain, category: "ai-ml" },

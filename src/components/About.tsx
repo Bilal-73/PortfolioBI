@@ -24,6 +24,7 @@ export function About() {
           transition={{ duration: 0.6 }}
           className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center"
         >
+          
           {/* Image */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -38,15 +39,12 @@ export function About() {
               
               {/* Profile Image Placeholder */}
               <div className="relative bg-card rounded-2xl overflow-hidden aspect-square border border-border shadow-card">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center space-y-4">
-                    <div className="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-                      <span className="text-4xl font-display font-bold text-primary-foreground">BI</span>
-                    </div>
-                    <p className="text-muted-foreground text-sm">Profile Photo</p>
-                  </div>
-                </div>
+                <img 
+                  // src={profileImage} 
+                  src="PROFILE_PIC.jpeg"
+                  alt="Bilal Imran - AI Developer" 
+                  className="w-full h-full object-cover object-top scale-150"
+                />
               </div>
             </div>
           </motion.div>
