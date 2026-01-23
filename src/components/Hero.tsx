@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
-import { ArrowDown, Download, Mail, Sparkles } from "lucide-react";
+import { ArrowDown, Download, Mail, Sparkles, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 export function Hero() {
   const scrollToContact = () => {
@@ -108,6 +109,17 @@ export function Hero() {
             >
               <Mail className="w-4 h-4 mr-2 transition-transform group-hover:scale-110" />
               Get in Touch
+            </Button>
+            <Button
+              size="lg"
+              variant="secondary"
+              className="group px-8"
+              asChild
+            >
+              <Link to="/paid-projects">
+                <Calendar className="w-4 h-4 mr-2 transition-transform group-hover:scale-110" />
+                Paid Projects
+              </Link>
             </Button>
           </motion.div>
 
