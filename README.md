@@ -44,7 +44,8 @@ Multi-language text translation tool using Python and Google Translator API.
 ## 🔗 Connect with Me
 
 - GitHub: [https://github.com/Bilal-73](https://github.com/Bilal-73)  
-- LinkedIn: [https://www.linkedin.com/in/bilal-imran/](https://www.linkedin.com/in/bilal-imran/)  
+- LinkedIn: [https://www.linkedin.com/in/bilalimran73ai/](https://www.linkedin.com/in/bilalimran73ai/)
+- Portfolio: [https://portfoliobilalimran.netlify.app/](https://portfoliobilalimran.netlify.app/)  
 
 ---
 
