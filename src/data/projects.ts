@@ -166,6 +166,18 @@ export const projects: Project[] = [
     liveUrl: "",
     technologies: ["Python", "Flask", "TF-IDF", "scikit-learn"],
   },
+
+    {
+    id: "5",
+    title: "YOLOv8 Video Object Detection",
+    description:
+      "A Flask-based web application that performs real-time object detection on uploaded videos using YOLOv8.",
+    categories: ["AI", "Yolo", "Object-Detection", "Python", "Flask"],
+    image: "/placeholder.svg",
+    githubUrl: "https://github.com/Bilal-73/YOLOv8-Video-Object-Detection",
+    liveUrl: "",
+    technologies: ["Python", "Flask", "YOLO"],
+  }
 ];
 
 export const allCategories = [
@@ -175,4 +187,6 @@ export const allCategories = [
   "Flask",
   "FastAPI",
   "Web Development",
+  "Object-Detection",
+  "Yolo"
 ];
