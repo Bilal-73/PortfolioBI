@@ -240,8 +240,8 @@ import { useToast } from "@/hooks/use-toast";
 const socialLinks = [
   { name: "GitHub", icon: Github, url: "https://github.com/Bilal-73" },
   { name: "LinkedIn", icon: Linkedin, url: "https://linkedin.com/in/bilalimran73ai" },
-  { name: "Instagram", icon: Instagram, url: "https://instagram.com/bilalimran" },
-  { name: "Facebook", icon: Facebook, url: "https://facebook.com/bilalimran" },
+  { name: "Instagram", icon: Instagram, url: "https://instagram.com/bilalimran45" },
+  { name: "Facebook", icon: Facebook, url: "https://www.facebook.com/bilalimran.7273" },
 ];
 
 export function Contact() {
