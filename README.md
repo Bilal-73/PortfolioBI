@@ -1,73 +1,57 @@
-# Welcome to your Lovable project
+# Bilal Imran – AI & Full-Stack Enthusiast
 
-## Project info
+[![GitHub](https://img.shields.io/badge/github-Bilal--73-black?logo=github&logoColor=white)](https://github.com/Bilal-73)
+[![Python](https://img.shields.io/badge/python-3.11-blue?logo=python&logoColor=white)](https://www.python.org/)
+[![LinkedIn](https://img.shields.io/badge/linkedin-Bilal%20Imran-blue?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/bilal-imran/)
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+---
 
-## How can I edit this code?
+## 🔹 About Me
 
-There are several ways of editing your application.
+I am a **BS Computer Science graduate (AI specialization)** with experience in **Machine Learning, NLP, Computer Vision, and Full-Stack Development**.  
+I build **AI-powered web and mobile applications**, design **REST APIs**, and integrate them with **interactive frontends**.  
 
-**Use Lovable**
+I am passionate about **creating intelligent systems that solve real-world problems** and sharing knowledge through open-source projects.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🛠️ Skills
 
-**Use your preferred IDE**
+- **Languages:** Python, JavaScript, C#  
+- **Frameworks:** FastAPI, Flask, React, React Native  
+- **AI/ML:** TF-IDF, Random Forest, LSTM, BERT, U-Net  
+- **Tools:** Git, SQL Server, VS Code, Numpy, Pandas, Scikit-learn  
+- **Other:** REST APIs, Chatbots, Resume Parsing, NLP, Data Analysis
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+---
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 📂 Featured Projects
 
-Follow these steps:
+### 1. [Resume Classification & Details Extraction API](https://github.com/Bilal-73/Resume-Classification-and-Details-Extraction)  
+AI-powered system to classify resumes and extract key details like emails and phone numbers. Built with FastAPI, TF-IDF, and Random Forest.
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### 2. [Phishing & Spam Detection](https://github.com/Bilal-73/Phishing-and-Spam-Detection)  
+Machine learning model to detect phishing and spam emails. Includes pre-trained model and API for deployment.
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### 3. [FAQ Chatbot](https://github.com/Bilal-73/ChatBotFAQs)  
+Web-based chatbot using Flask and TF-IDF to answer user queries from FAQs.
 
-# Step 3: Install the necessary dependencies.
-npm i
+### 4. [Polyglot Translator](https://github.com/Bilal-73/Polyglot-Translator)  
+Multi-language text translation tool using Python and Google Translator API.
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+---
 
-**Edit a file directly in GitHub**
+## 🔗 Connect with Me
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+- GitHub: [https://github.com/Bilal-73](https://github.com/Bilal-73)  
+- LinkedIn: [https://www.linkedin.com/in/bilal-imran/](https://www.linkedin.com/in/bilal-imran/)  
 
-**Use GitHub Codespaces**
+---
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### ⭐ Show Your Support
 
-## What technologies are used for this project?
+If you like my work, please:  
+- ⭐ Star my repositories  
+- 🍴 Fork them  
+- 🧠 Share ideas for improvement  
 
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
