@@ -41,7 +41,7 @@ export function About() {
                 <div className="relative bg-card rounded-2xl overflow-hidden aspect-square border border-border shadow-card">
                 <img
                   // src={profileImage}
-                  src="ProfessionalPicture.png"
+                  src="ProfessionalPicture.webp"
                   alt="Bilal Imran - AI Developer"
                   className="w-full h-full object-cover object-center"
                 />
