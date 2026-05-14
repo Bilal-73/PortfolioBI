@@ -43,7 +43,7 @@ export const skills: Skill[] = [
   { name: "Git", level: 92, icon: GitBranch, category: "tools" },
   { name: "n8n", level: 85, icon: Workflow, category: "tools" },
   { name: "AWS", level: 78, icon: Cloud, category: "tools" },
-  { name: "Linux", level: 85, icon: Terminal, category: "tools" },
+  // Removed Linux as requested
 ];
 
 export const skillCategories = {

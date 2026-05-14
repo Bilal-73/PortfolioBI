@@ -38,12 +38,12 @@ export function About() {
               <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 rounded-2xl rotate-3 scale-102" />
               
               {/* Profile Image Placeholder */}
-              <div className="relative bg-card rounded-2xl overflow-hidden aspect-square border border-border shadow-card">
-                <img 
-                  // src={profileImage} 
-                  src="PROFILE_PIC.jpeg"
-                  alt="Bilal Imran - AI Developer" 
-                  className="w-full h-full object-cover object-top scale-150"
+                <div className="relative bg-card rounded-2xl overflow-hidden aspect-square border border-border shadow-card">
+                <img
+                  // src={profileImage}
+                  src="ProfessionalPicture.png"
+                  alt="Bilal Imran - AI Developer"
+                  className="w-full h-full object-cover object-center"
                 />
               </div>
             </div>

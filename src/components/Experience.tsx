@@ -141,6 +141,18 @@ import { Briefcase, Calendar, MapPin } from "lucide-react";
 
 const experiences = [
   {
+    role: "AI Intern",
+    company: "Systems Limited",
+    location: "Islamabad, Pakistan",
+    duration: "2 Feb 2026 - 31 May 2026 (4 months)",
+    highlights: [
+      "Delivered NLP training sessions and workshops",
+      "Built end-to-end NLP pipelines from raw data to LLM integration",
+      "Documented how NLP methodologies evolved and applied best practices",
+      "Migrated Azure Bot Framework to Azure Agent SDK for improved agent workflows",
+    ],
+  },
+  {
     role: "AI Engineer Intern",
     company: "Nueroticure",
     location: "Hybrid",
