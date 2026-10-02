@@ -1,160 +1,93 @@
-
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
-import { Briefcase, Calendar, MapPin } from "lucide-react";
+import { Section } from "./Section";
 
 const experiences = [
-    {
+  {
     role: "AI Associate Software Engineer",
-    company: "TEO, Danish company",
-    location: "Islamabad, Pakistan",
-    duration: "2 June 2026 - Present",
+    company: "TEO",
+    location: "Islamabad",
+    duration: "Jun 2026 – Now",
     highlights: [
-      "Working on mastering RAG workflows for better retrieval and response quality",
-      "Building with LangChain to design flexible, production-ready AI pipelines",
-      "Developing agentic AI systems with tool use, planning, and orchestration",
-      "Collaborating with the team at TEO, a Danish company, on practical AI delivery",
+      "Building RAG workflows with a focus on retrieval and answer quality",
+      "Designing LangChain pipelines meant to hold up in production",
+      "Developing agentic systems with tool use, planning and orchestration",
+      "Working with a Danish product team on applied AI delivery",
     ],
   },
   {
     role: "AI Intern",
     company: "Systems Limited",
-    location: "Islamabad, Pakistan",
-    duration: "2 Feb 2026 - 31 May 2026 (4 months)",
+    location: "Islamabad",
+    duration: "Feb – May 2026",
     highlights: [
-      "Delivered NLP training sessions and workshops",
-      "Built end-to-end NLP pipelines from raw data to LLM integration",
-      "Documented how NLP methodologies evolved and applied best practices",
-      "Migrated Azure Bot Framework to Azure Agent SDK for improved agent workflows",
+      "Built end-to-end NLP pipelines, from raw data to LLM integration",
+      "Migrated an Azure Bot Framework bot to the Azure Agent SDK",
+      "Ran NLP training sessions and workshops for the team",
+      "Documented how NLP methods evolved and which practices to keep",
     ],
   },
   {
     role: "AI Engineer Intern",
     company: "Nueroticure",
     location: "Hybrid",
-    duration: "Jun 2025 - Aug 2025",
+    duration: "Jun – Aug 2025",
     highlights: [
-      "Developed AI features for internal applications using Python and ML frameworks",
-      "Integrated backend AI models with React frontend for real-time use",
-      "Worked on automation pipelines using n8n and cloud services",
-      "Collaborated with senior engineers to optimize AI workflows",
+      "Developed AI features for internal applications in Python",
+      "Connected backend models to a React front end for real-time use",
+      "Built automation pipelines with n8n and cloud services",
     ],
   },
   {
     role: "Tech Intern",
     company: "Forhopp",
     location: "Remote",
-    duration: "Jun 2025 -  Aug 2025",
+    duration: "Jun – Aug 2025",
     highlights: [
-      "Assisted in building React applications and web dashboards",
-      "Worked with backend APIs and database integration",
-      "Learned and implemented workflow automation using n8n",
-      "Optimized application performance and user experience",
+      "Built React applications and internal dashboards",
+      "Integrated backend APIs and databases",
+      "Set up workflow automation with n8n",
     ],
   },
   {
-    role: "FYP Leader – NS-VQA",
-    company: "Arid Agriculture University",
-    location: "Rawalpindi, Pakistan",
-    duration: "7th & 8th Sem",
+    role: "Final Year Project Lead, NS-VQA",
+    company: "PMAS Arid Agriculture University",
+    location: "Rawalpindi",
+    duration: "Final year",
     highlights: [
-      "Led the team developing Neuro-Symbolic VQA project for visual question answering",
-      "Implemented AI models combining neural networks and symbolic reasoning",
-      "Designed project architecture and supervised team coding standards",
-      "Presented project results to faculty and participated in research discussions",
+      "Led the team building a neuro-symbolic visual question answering system",
+      "Combined neural perception models with symbolic reasoning",
+      "Owned the architecture and the team's coding standards",
     ],
   },
 ];
 
 export function Experience() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
   return (
-    <section id="experience" className="section-padding">
-      <div className="container-narrow" ref={ref}>
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-12"
-        >
-          <span className="text-primary font-mono text-sm">// Experience</span>
-          <h2 className="text-3xl md:text-4xl font-display font-bold mt-2">
-            My <span className="gradient-text">Journey</span>
-          </h2>
-          <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
-            Professional experience and internships in AI and software development
-          </p>
-        </motion.div>
-
-        <div className="relative">
-          {/* Timeline Line */}
-          <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-border md:-translate-x-1/2" />
-
-          <div className="space-y-12">
-            {experiences.map((exp, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`relative grid md:grid-cols-2 gap-8 ${
-                  index % 2 === 0 ? "" : "md:text-right"
-                }`}
-              >
-                {/* Timeline Dot */}
-                <div className="absolute left-0 md:left-1/2 w-4 h-4 rounded-full bg-primary border-4 border-background shadow-glow -translate-x-1/2 md:translate-x-[-8px]" />
-
-                {/* Content */}
-                <div
-                  className={`pl-8 md:pl-0 ${
-                    index % 2 === 0
-                      ? "md:pr-12"
-                      : "md:col-start-2 md:pl-12 md:text-left"
-                  }`}
-                >
-                  <div className="p-6 rounded-xl bg-card border border-border hover:border-primary/50 hover:shadow-card-hover transition-all duration-300">
-                    <div className="flex flex-wrap items-center gap-2 mb-3">
-                      <span className="inline-flex items-center gap-1 text-sm text-primary font-medium">
-                        <Briefcase className="w-4 h-4" />
-                        {exp.company}
-                      </span>
-                    </div>
-
-                    <h3 className="text-xl font-display font-semibold text-foreground mb-2">
-                      {exp.role}
-                    </h3>
-
-                    <div className="flex flex-wrap gap-4 text-sm text-muted-foreground mb-4">
-                      <span className="inline-flex items-center gap-1">
-                        <Calendar className="w-4 h-4" />
-                        {exp.duration}
-                      </span>
-                      <span className="inline-flex items-center gap-1">
-                        <MapPin className="w-4 h-4" />
-                        {exp.location}
-                      </span>
-                    </div>
-
-                    <ul className="space-y-2 text-sm text-muted-foreground">
-                      {exp.highlights.map((highlight, i) => (
-                        <li key={i} className="flex gap-2">
-                          <span className="text-primary mt-1.5 flex-shrink-0">•</span>
-                          <span className="text-left">{highlight}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-
-                {/* Empty space for alternating layout */}
-                {index % 2 === 0 && <div className="hidden md:block" />}
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
+    <Section id="experience" index="02" title="Experience">
+      <ol className="divide-y divide-border">
+        {experiences.map((exp) => (
+          <li
+            key={`${exp.company}-${exp.role}`}
+            className="grid gap-2 py-8 first:pt-0 last:pb-0 sm:grid-cols-[130px_1fr] sm:gap-8"
+          >
+            <p className="font-mono text-xs leading-6 text-muted-foreground">{exp.duration}</p>
+            <div>
+              <h3 className="text-[17px] font-medium leading-6">
+                {exp.role}
+                <span className="text-muted-foreground"> · {exp.company}</span>
+              </h3>
+              <p className="mt-0.5 text-sm text-muted-foreground">{exp.location}</p>
+              <ul className="mt-4 space-y-2 text-[15px] leading-relaxed text-muted-foreground">
+                {exp.highlights.map((highlight) => (
+                  <li key={highlight} className="relative pl-4">
+                    <span className="absolute left-0 top-[0.7em] h-px w-2 bg-muted-foreground/60" />
+                    {highlight}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </Section>
   );
 }

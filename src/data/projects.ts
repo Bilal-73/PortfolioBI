@@ -1,111 +1,134 @@
-import { match } from "assert/strict";
+export interface ProjectLink {
+  label: string;
+  url: string;
+}
 
 export interface Project {
   id: string;
   title: string;
+  area: string;
   description: string;
-  categories: string[];
-  image: string;
-  githubUrl: string;
-  liveUrl?: string;
+  /** First link is the primary one the title points to. */
+  links: ProjectLink[];
   technologies: string[];
   featured?: boolean;
 }
 
+const gh = (repo: string) => `https://github.com/Bilal-73/${repo}`;
+
 export const projects: Project[] = [
-
-    {
-    id: "1",
-    title: "Gate Keeper AI",
-    description: "Contactless multi-factor identity verification kiosk — face match + anti-spoof liveness + gesture confirmation. FastAPI, InsightFace, Qdrant, MediaPipe.",
-    image: "/placeholder.svg",
-    githubUrl: "https://github.com/Bilal-73/gatekeeper-ai",
-    liveUrl: "",
-    technologies: ["Python", "FastAPI", "InsightFace", "Qdrant", "MediaPipe"],
-    categories: ["AI", "NLP", "Python", "FastAPI"],
+  {
+    id: "ns-vqa",
+    title: "Neuro-Symbolic Visual Question Answering",
+    area: "Computer vision · Final-year project",
+    description:
+      "A voice-driven assistant for blind and visually impaired users. The phone captures a frame, the user asks a question out loud, and a hybrid engine answers from a scene graph built over YOLO detections, falling back across grammar, pattern and ML-based reasoning. A temporal mode watches a fixed camera and reports who comes and goes.",
+    links: [
+      { label: "Backend", url: gh("NueroSymbolicVisualQuestionAnwering-Backend") },
+      { label: "Mobile app", url: gh("NueroSymbolicVisualQuestionAnwering-FrontEnd") },
+    ],
+    technologies: ["Flask", "YOLO", "Whisper", "Knowledge graphs", "React Native", "SQL Server"],
     featured: true,
   },
-   {
-    id: "2",
+  {
+    id: "medical-rag",
+    title: "Medical RAG",
+    area: "Multimodal RAG",
+    description:
+      "Question answering over ten research papers on metformin and glycaemic control, where a wrong answer is costly. Text, tables and figure captions are all retrievable through hybrid dense and sparse search with reranking, every answer carries citations, and retrieval and generation are evaluated separately with a golden QA set and RAGAS.",
+    links: [{ label: "Code", url: gh("DiabetesMedicalRAG") }],
+    technologies: ["Docling", "Qdrant", "Azure OpenAI", "RAGAS", "Streamlit"],
+    featured: true,
+  },
+  {
+    id: "doculens",
     title: "Doculens",
-    description: "Multimodal RAG chatbot for PDFs — text, tables, and figures. Docling + CLIP + Qdrant + Redis + Azure OpenAI, with full retrieval-debugging logs.",
-    image: "/placeholder.svg",
-    githubUrl: "https://github.com/Bilal-73/doculens",
-    liveUrl: "",
-    technologies: ["Python", "FastAPI", "Docling", "CLIP", "Qdrant", "Redis", "Azure OpenAI"],
-    categories: ["AI", "NLP", "Python", "FastAPI"],
-    featured: true,
-  },
-  {
-    id: "3",
-    title: "Resume Classification & Details Extraction",
+    area: "Multimodal RAG",
     description:
-      "AI-powered API that classifies resumes and extracts contact info, skills, and predicts job categories using TF-IDF and Random Forest. Integrates with frontend for resume matching.",
-    categories: ["AI", "NLP", "Python", "FastAPI"],
-    image: "/placeholder.svg",
-    githubUrl: "https://github.com/Bilal-73/Resume-Classification-and-Details-Extraction",
-    liveUrl: "",
-    technologies: ["Python", "FastAPI", "TF-IDF", "Random Forest"],
+      "Chat with PDFs, including their tables and figures, not just the text. Every answer comes with retrieval logs, so you can see why a chunk was or wasn't picked.",
+    links: [{ label: "Code", url: gh("doculens") }],
+    technologies: ["Docling", "CLIP", "Qdrant", "Redis", "Azure OpenAI", "FastAPI"],
     featured: true,
   },
   {
-    id: "4",
+    id: "gatekeeper-ai",
+    title: "Gate Keeper AI",
+    area: "Computer vision",
+    description:
+      "A contactless identity-verification kiosk. It matches a face against enrolled users, rejects spoofing attempts with a liveness check, and asks for a hand gesture to confirm.",
+    links: [{ label: "Code", url: gh("gatekeeper-ai") }],
+    technologies: ["FastAPI", "InsightFace", "Qdrant", "MediaPipe"],
+    featured: true,
+  },
+  {
+    id: "phishing-spam",
     title: "Phishing & Spam Detection",
+    area: "NLP",
     description:
-      "Machine learning system that detects phishing, spam, and ham emails using TF-IDF vectorization and Random Forest classifier, with FastAPI API for deployment.",
-    categories: ["AI", "NLP", "Python", "FastAPI"],
-    image: "/placeholder.svg",
-    githubUrl: "https://github.com/Bilal-73/Phishing-and-Spam-Detection",
-    liveUrl: "",
-    technologies: ["Python", "FastAPI", "scikit-learn", "TF-IDF", "Random Forest"],
+      "Classifies emails as phishing, spam or legitimate. SMOTE rebalances the skewed classes before training, and predictions are served in real time through a FastAPI endpoint.",
+    links: [{ label: "Code", url: gh("Phishing-and-Spam-Detection") }],
+    technologies: ["FastAPI", "scikit-learn", "TF-IDF", "SMOTE", "Random Forest"],
     featured: true,
   },
-    {
-    id: "5",
-    title: "ChatBotFAQs",
-    description:
-      "FAQ chatbot web application that answers user questions using TF-IDF vectorization and cosine similarity. Built with Flask and a clean HTML/CSS UI.",
-    categories: ["AI", "NLP", "Python", "Flask"],
-    image: "/placeholder.svg",
-    githubUrl: "https://github.com/Bilal-73/ChatBotFAQs",
-    liveUrl: "",
-    technologies: ["Python", "Flask", "TF-IDF", "scikit-learn"],
+  {
+    id: "resume-classification",
+    title: "Resume Classification & Extraction",
+    area: "NLP",
+    description: "An API that pulls contact details and skills out of a résumé and predicts its job category.",
+    links: [{ label: "Code", url: gh("Resume-Classification-and-Details-Extraction") }],
+    technologies: ["FastAPI", "TF-IDF", "Random Forest"],
   },
   {
-    id: "6",
-    title: "Polyglot Translator",
-    description:
-      "Web-based text translator supporting multiple languages using Python, Flask, and Google Translator API.",
-    categories: ["AI", "NLP", "Python", "Flask"],
-    image: "/placeholder.svg",
-    githubUrl: "https://github.com/Bilal-73/Polyglot-Translator",
-    liveUrl: "",
-    technologies: ["Python", "Flask", "Google Translator API"],
+    id: "langchain-agents",
+    title: "LangChain Agents",
+    area: "Agents",
+    description: "A tool-using LangChain assistant with calculator and search tools and separate prompt modules.",
+    links: [{ label: "Code", url: gh("langchain-agents") }],
+    technologies: ["LangChain", "OpenAI"],
   },
-
-   {
-    id: "7",
+  {
+    id: "yolov8-video",
     title: "YOLOv8 Video Object Detection",
-    description:
-      "A Flask-based web application that performs real-time object detection on uploaded videos using YOLOv8.",
-    categories: ["AI", "Yolo", "Object-Detection", "Python", "Flask"],
-    image: "/placeholder.svg",
-    githubUrl: "https://github.com/Bilal-73/YOLOv8-Video-Object-Detection",
-    liveUrl: "",
-    technologies: ["Python", "Flask", "YOLO"],
-  },  
-
-
-   
-];
-
-export const allCategories = [
-  "AI",
-  "NLP",
-  "Python",
-  "Flask",
-  "FastAPI",
-  "Web Development",
-  "Object-Detection",
-  "Yolo"
+    area: "Computer vision",
+    description: "Upload a video and get it back with detected objects labelled, frame by frame.",
+    links: [{ label: "Code", url: gh("YOLOv8-Video-Object-Detection") }],
+    technologies: ["Flask", "YOLOv8"],
+  },
+  {
+    id: "streamlit-fastapi-course",
+    title: "Streamlit & FastAPI Workshop",
+    area: "Teaching",
+    description: "Live-coding demos for a Streamlit and FastAPI session, ending with a Streamlit client calling a FastAPI RAG-style backend.",
+    links: [{ label: "Code", url: gh("StreamlitBasicCourse") }],
+    technologies: ["Streamlit", "FastAPI"],
+  },
+  {
+    id: "neural-mt",
+    title: "Neural Machine Translation",
+    area: "NLP",
+    description: "English, German and French translation with pretrained MarianMT models from Hugging Face.",
+    links: [
+      {
+        label: "Code",
+        url: gh("MultiLang-Translator-Neural-Machine-Translation-with-HuggingFace-Transformers"),
+      },
+    ],
+    technologies: ["Transformers", "PyTorch"],
+  },
+  {
+    id: "chatbot-faqs",
+    title: "ChatBotFAQs",
+    area: "NLP",
+    description: "An FAQ bot that answers with the closest matching question by cosine similarity.",
+    links: [{ label: "Code", url: gh("ChatBotFAQs") }],
+    technologies: ["Flask", "TF-IDF", "scikit-learn"],
+  },
+  {
+    id: "multilang-translator",
+    title: "Multi-language Translator",
+    area: "Web",
+    description: "A Flask app translating between English, French, German, Spanish, Italian and Hindi.",
+    links: [{ label: "Code", url: gh("MultiLang-Translator-using-DeepTranslator") }],
+    technologies: ["Flask", "deep-translator"],
+  },
 ];
