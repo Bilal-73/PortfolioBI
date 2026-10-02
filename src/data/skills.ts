@@ -9,14 +9,14 @@ export const skillGroups = [
   },
   {
     label: "Frameworks",
-    items: ["LangChain", "PyTorch", "TensorFlow", "scikit-learn", "FastAPI", "Flask"],
+    items: ["LangChain", "Hugging Face Transformers", "PyTorch", "TensorFlow", "scikit-learn", "YOLO", "RAGAS", "FastAPI", "Flask"],
   },
   {
     label: "Front end",
-    items: ["React", "React Native"],
+    items: ["React", "React Native", "Streamlit"],
   },
   {
     label: "Data & infra",
-    items: ["Qdrant", "Redis", "Azure OpenAI", "AWS", "Docker", "Git", "n8n"],
+    items: ["Qdrant", "Redis", "SQL Server", "Azure OpenAI", "AWS", "Docker", "Git", "n8n"],
   },
 ];
