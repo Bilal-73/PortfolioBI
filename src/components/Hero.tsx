@@ -1,161 +1,73 @@
-import { motion } from "framer-motion";
-import { ArrowDown, Download, Mail, Sparkles, Calendar } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ArrowRight, ArrowUpRight, Download } from "lucide-react";
 import { Link } from "react-router-dom";
+import { profile } from "@/data/profile";
 
 export function Hero() {
-  const scrollToContact = () => {
-    const element = document.querySelector("#contact");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-50" />
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background" />
-      
-      {/* Animated Gradient Orbs */}
-      <motion.div
-        className="absolute top-1/4 -left-32 w-96 h-96 bg-primary/20 rounded-full blur-3xl"
-        animate={{
-          x: [0, 50, 0],
-          y: [0, 30, 0],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
-      <motion.div
-        className="absolute bottom-1/4 -right-32 w-96 h-96 bg-accent/20 rounded-full blur-3xl"
-        animate={{
-          x: [0, -50, 0],
-          y: [0, -30, 0],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
+    <section id="top" className="container-narrow pb-16 pt-28 md:pb-24 md:pt-40">
+      <div className="grid items-end gap-10 md:grid-cols-[1fr_240px] md:gap-16">
+        <div>
+          <p className="eyebrow flex items-center gap-2">
+            <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden />
+            {profile.currentRole} at {profile.currentCompany} · {profile.location}
+          </p>
 
-      <div className="container-narrow relative z-10">
-        <div className="text-center space-y-8">
-          {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary border border-border"
-          >
-            <Sparkles className="w-4 h-4 text-primary" />
-            <span className="text-sm text-muted-foreground">AI Developer & ML Engineer</span>
-          </motion.div>
+          <h1 className="mt-6 max-w-[16ch] font-serif text-[2.75rem] leading-[1.02] tracking-[-0.01em] sm:text-6xl md:text-[4.5rem]">
+            I build retrieval systems, agents and{" "}
+            <em className="text-accent">computer-vision</em> tools.
+          </h1>
 
-          {/* Name */}
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-bold tracking-tight"
-          >
-            Hi, I'm{" "}
-            <span className="gradient-text">Bilal</span>
-            <br />
-            <span className="text-muted-foreground">Imran</span>
-          </motion.h1>
+          <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-muted-foreground">
+            I'm Bilal Imran, an AI engineer working with LangChain, RAG pipelines and
+            FastAPI services, from the model through to the interface people use.
+          </p>
 
-          {/* Tagline */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto"
-          >
-            Building intelligent systems that transform data into insights.
-            Passionate about machine learning, deep learning, and creating
-            AI-powered solutions that make a difference.
-          </motion.p>
-
-          {/* CTA Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
-          >
-            {/* <Button
-              size="lg"
-              className="group relative overflow-hidden bg-primary hover:bg-primary/90 text-primary-foreground px-8"
-              asChild
+          <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4 text-sm">
+            <a
+              href="/resume.pdf"
+              download
+              className="inline-flex items-center gap-2 rounded-full bg-foreground px-5 py-2.5 font-medium text-background transition-opacity hover:opacity-85"
             >
-              <a href="/resume.pdf" download>
-                <span className="relative z-10 flex items-center gap-2">
-                  <Download className="w-4 h-4 transition-transform group-hover:-translate-y-1" />
-                  Download Resume
-                </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent opacity-0 group-hover:opacity-100 transition-opacity" />
-              </a>
-            </Button> */}
-
-
-            <Button
-  size="lg"
-  className="group relative overflow-hidden bg-primary hover:bg-primary/90 text-primary-foreground px-8"
-  asChild
->
-  <a href="/resume.pdf" download>
-    <span className="relative z-10 flex items-center gap-2">
-      <Download className="w-4 h-4 transition-transform group-hover:-translate-y-1" />
-      Download Resume
-    </span>
-    <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent opacity-0 group-hover:opacity-100 transition-opacity" />
-  </a>
-</Button>
-
-            <Button
-              size="lg"
-              variant="outline"
-              className="group border-border hover:border-primary hover:bg-primary/5 px-8"
-              onClick={scrollToContact}
+              <Download className="h-4 w-4" />
+              Résumé
+            </a>
+            <a href={`mailto:${profile.email}`} className="link text-muted-foreground">
+              {profile.email}
+            </a>
+            <a
+              href={profile.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link inline-flex items-center gap-0.5 text-muted-foreground"
             >
-              <Mail className="w-4 h-4 mr-2 transition-transform group-hover:scale-110" />
-              Get in Touch
-            </Button>
-            <Button
-              size="lg"
-              variant="secondary"
-              className="group px-8"
-              asChild
+              GitHub <ArrowUpRight className="h-3.5 w-3.5" />
+            </a>
+            <a
+              href={profile.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link inline-flex items-center gap-0.5 text-muted-foreground"
             >
-              <Link to="/paid-projects">
-                <Calendar className="w-4 h-4 mr-2 transition-transform group-hover:scale-110" />
-                Paid Projects
-              </Link>
-            </Button>
-          </motion.div>
+              LinkedIn <ArrowUpRight className="h-3.5 w-3.5" />
+            </a>
+          </div>
 
-          {/* Scroll Indicator */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1 }}
-            className="absolute bottom-8 left-1/2 -translate-x-1/2"
+          <Link
+            to="/paid-projects"
+            className="group mt-8 inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
           >
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-              className="flex flex-col items-center gap-2 text-muted-foreground"
-            >
-              <span className="text-xs uppercase tracking-widest">Scroll</span>
-              <ArrowDown className="w-4 h-4" />
-            </motion.div>
-          </motion.div>
+            Open to freelance projects
+            <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+          </Link>
         </div>
+
+        <figure className="w-40 md:w-full">
+          <img
+            src="/ProfessionalPicture.webp"
+            alt="Portrait of Bilal Imran"
+            className="aspect-[4/5] w-full rounded-sm object-cover grayscale-[15%]"
+          />
+        </figure>
       </div>
     </section>
   );

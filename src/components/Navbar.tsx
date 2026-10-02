@@ -1,14 +1,12 @@
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { DarkModeToggle } from "./DarkModeToggle";
 
 const navLinks = [
   { name: "About", href: "#about" },
-  { name: "Skills", href: "#skills" },
-  { name: "Projects", href: "#projects" },
   { name: "Experience", href: "#experience" },
-  { name: "Education", href: "#education" },
+  { name: "Work", href: "#projects" },
+  { name: "Skills", href: "#skills" },
   { name: "Contact", href: "#contact" },
 ];
 
@@ -17,100 +15,65 @@ export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => setIsScrolled(window.scrollY > 8);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleNavClick = (href: string) => {
-    setIsMobileMenuOpen(false);
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-background/80 backdrop-blur-lg shadow-lg border-b border-border"
-          : "bg-transparent"
+    <nav
+      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-200 ${
+        isScrolled || isMobileMenuOpen
+          ? "border-b border-border bg-background/90 backdrop-blur-md"
+          : "border-b border-transparent bg-background"
       }`}
     >
-      <div className="container-narrow">
-        <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Logo */}
-          <motion.a
-            href="#"
-            className="text-xl md:text-2xl font-display font-bold gradient-text"
-            whileHover={{ scale: 1.02 }}
-          >
-            BI<span className="text-primary">.</span>
-          </motion.a>
+      <div className="container-narrow flex h-16 items-center justify-between">
+        <a href="#top" className="text-[15px] font-medium tracking-tight">
+          Bilal Imran
+        </a>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <motion.button
-                key={link.name}
-                onClick={() => handleNavClick(link.href)}
-                className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors relative group"
-                whileHover={{ y: -2 }}
-              >
-                {link.name}
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-primary group-hover:w-1/2 transition-all duration-300" />
-              </motion.button>
-            ))}
-            <div className="ml-4">
-              <DarkModeToggle />
-            </div>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <div className="flex items-center gap-4 md:hidden">
-            <DarkModeToggle />
-            <motion.button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 text-foreground"
-              whileTap={{ scale: 0.95 }}
+        <div className="hidden items-center gap-7 md:flex">
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
-              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </motion.button>
-          </div>
+              {link.name}
+            </a>
+          ))}
+          <DarkModeToggle />
+        </div>
+
+        <div className="flex items-center gap-1 md:hidden">
+          <DarkModeToggle />
+          <button
+            onClick={() => setIsMobileMenuOpen((open) => !open)}
+            className="p-2"
+            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isMobileMenuOpen}
+          >
+            {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-background/95 backdrop-blur-lg border-b border-border"
-          >
-            <div className="container-narrow py-4 space-y-2">
-              {navLinks.map((link, index) => (
-                <motion.button
-                  key={link.name}
-                  onClick={() => handleNavClick(link.href)}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.05 }}
-                  className="block w-full text-left px-4 py-3 text-foreground hover:bg-secondary rounded-lg transition-colors"
-                >
-                  {link.name}
-                </motion.button>
-              ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.nav>
+      {isMobileMenuOpen && (
+        <div className="container-narrow pb-4 md:hidden">
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="block border-t border-border py-3 text-[15px]"
+            >
+              {link.name}
+            </a>
+          ))}
+        </div>
+      )}
+    </nav>
   );
 }
