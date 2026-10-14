@@ -2,39 +2,50 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Editorial, ink-on-paper theme. One accent colour, no gradients. All colours HSL. */
+/* Playful pop theme: cream paper, ink outlines, hard offset shadows and a few loud
+   sticker colours. Pop colours stay the same in both themes; text on them is always
+   --on-pop so it keeps its contrast. All colours HSL. */
 
 @layer base {
   :root {
-    --background: 40 20% 97%;
-    --foreground: 30 8% 9%;
+    --background: 37 100% 94%;
+    --foreground: 0 0% 8%;
 
-    --card: 40 25% 99%;
-    --card-foreground: 30 8% 9%;
+    --card: 43 100% 99%;
+    --card-foreground: 0 0% 8%;
 
-    --popover: 40 25% 99%;
-    --popover-foreground: 30 8% 9%;
+    --popover: 43 100% 99%;
+    --popover-foreground: 0 0% 8%;
 
-    --primary: 30 8% 9%;
-    --primary-foreground: 40 20% 97%;
+    --primary: 0 0% 8%;
+    --primary-foreground: 37 100% 94%;
 
-    --secondary: 40 12% 92%;
-    --secondary-foreground: 30 8% 9%;
+    --secondary: 37 60% 89%;
+    --secondary-foreground: 0 0% 8%;
 
-    --muted: 40 12% 92%;
-    --muted-foreground: 30 5% 40%;
+    --muted: 37 60% 89%;
+    --muted-foreground: 37 11% 33%;
 
-    --accent: 14 78% 44%;
-    --accent-foreground: 40 20% 97%;
+    --accent: 18 100% 58%;
+    --accent-foreground: 0 0% 8%;
 
     --destructive: 0 72% 45%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 35 12% 86%;
-    --input: 35 12% 82%;
-    --ring: 14 78% 44%;
+    --border: 0 0% 8%;
+    --input: 0 0% 8%;
+    --ring: 227 100% 59%;
 
-    --radius: 0.375rem;
+    --radius: 1.125rem;
+
+    --pop-orange: 18 100% 58%;
+    --pop-blue: 227 100% 59%;
+    --pop-lime: 74 87% 59%;
+    --pop-pink: 327 100% 80%;
+    --pop-yellow: 46 100% 62%;
+    --pop-sky: 227 100% 78%;
+    --on-pop: 0 0% 8%;
+    --paper: 43 100% 99%;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -47,33 +58,26 @@
   }
 
   .dark {
-    --background: 40 6% 7%;
-    --foreground: 40 15% 90%;
+    --background: 30 5% 8%;
+    --foreground: 39 61% 92%;
 
-    --card: 40 6% 9%;
-    --card-foreground: 40 15% 90%;
+    --card: 36 8% 12%;
+    --card-foreground: 39 61% 92%;
 
-    --popover: 40 6% 9%;
-    --popover-foreground: 40 15% 90%;
+    --popover: 36 8% 12%;
+    --popover-foreground: 39 61% 92%;
 
-    --primary: 40 15% 90%;
-    --primary-foreground: 40 6% 7%;
+    --primary: 39 61% 92%;
+    --primary-foreground: 30 5% 8%;
 
-    --secondary: 40 5% 14%;
-    --secondary-foreground: 40 15% 90%;
+    --secondary: 36 8% 16%;
+    --secondary-foreground: 39 61% 92%;
 
-    --muted: 40 5% 14%;
-    --muted-foreground: 40 5% 60%;
+    --muted: 36 8% 16%;
+    --muted-foreground: 36 15% 67%;
 
-    --accent: 18 85% 62%;
-    --accent-foreground: 40 6% 7%;
-
-    --destructive: 0 63% 50%;
-    --destructive-foreground: 0 0% 100%;
-
-    --border: 40 5% 18%;
-    --input: 40 5% 22%;
-    --ring: 18 85% 62%;
+    --border: 39 61% 92%;
+    --input: 39 61% 92%;
 
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
@@ -93,40 +97,109 @@
 
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 5rem;
+    scroll-padding-top: 6rem;
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
-    font-feature-settings: "ss01", "cv11";
+    @apply bg-background font-sans text-foreground antialiased transition-[background-color] duration-300;
     overflow-x: hidden;
   }
 
+  h1,
+  h2,
+  h3 {
+    @apply font-display tracking-[-0.02em];
+  }
+
   ::selection {
-    background: hsl(var(--accent) / 0.25);
+    background: hsl(var(--pop-lime));
+    color: hsl(var(--on-pop));
+  }
+
+  :focus-visible {
+    outline: 3px solid hsl(var(--pop-blue));
+    outline-offset: 3px;
+  }
+
+  /* The custom cursor replaces the system one only on precise pointers. */
+  html.has-custom-cursor,
+  html.has-custom-cursor * {
+    cursor: none !important;
   }
 
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
     }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 
 @layer components {
-  /* Text link with an underline that sits a little below the baseline */
-  .link {
-    @apply underline decoration-border underline-offset-[5px] transition-colors hover:decoration-accent hover:text-foreground;
+  /* Outlined card with a hard offset shadow */
+  .pop-box {
+    @apply rounded-[18px] border-[2.5px] border-foreground bg-card text-card-foreground shadow-pop;
   }
 
-  /* Small uppercase metadata line */
-  .eyebrow {
-    @apply font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground;
+  .btn-pop {
+    @apply inline-flex items-center gap-2 rounded-full border-[2.5px] border-foreground bg-card px-5 py-3 text-[15px] font-bold text-foreground shadow-pop transition-[transform,box-shadow] duration-150;
+  }
+  .btn-pop:hover {
+    @apply -translate-x-0.5 -translate-y-0.5 shadow-pop-lg;
+  }
+  .btn-pop:active {
+    @apply translate-x-[3px] translate-y-[3px] shadow-none;
+  }
+  .btn-pop-orange {
+    @apply bg-pop-orange text-onpop;
+  }
+
+  /* Rounded pill label. Colour it with a bg-pop-* class. */
+  .sticker {
+    @apply inline-block whitespace-nowrap rounded-full border-[2.5px] border-foreground px-3.5 py-1.5 text-[13px] font-bold text-onpop shadow-pop-sm;
+  }
+
+  .chip {
+    @apply inline-block rounded-full border-2 border-foreground bg-card px-2.5 py-0.5 font-mono text-xs;
+  }
+
+  /* Tilted marker highlight behind a word */
+  .hl {
+    @apply relative z-0 inline-block px-[0.12em] text-onpop;
+  }
+  .hl::before {
+    content: "";
+    @apply absolute -z-10 rounded-[0.2em] border-[2.5px] border-foreground bg-pop-orange;
+    inset: 0.08em -0.02em 0.02em;
+    transform: rotate(-2deg);
+  }
+
+  .logo {
+    @apply grid h-11 w-11 shrink-0 -rotate-6 place-items-center rounded-xl border-[2.5px] border-foreground bg-pop-lime font-display text-lg font-extrabold text-onpop shadow-pop-sm transition-transform duration-300 hover:rotate-[8deg] hover:scale-110;
+  }
+
+  .section-num {
+    @apply rounded-md bg-foreground px-2 py-0.5 font-mono text-[13px] font-semibold text-background;
+  }
+
+  .section-title {
+    @apply text-[2.75rem] font-extrabold leading-none sm:text-6xl md:text-[4.75rem];
+  }
+
+  .link {
+    @apply underline decoration-2 underline-offset-4 transition-colors hover:decoration-pop-orange;
   }
 }
 
 @layer utilities {
-  .container-narrow {
-    @apply mx-auto w-full max-w-5xl px-5 sm:px-8;
+  .container-wide {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-10;
   }
 }

@@ -1,6 +1,6 @@
-import { ArrowLeft } from "lucide-react";
-import { Link } from "react-router-dom";
-import { DarkModeToggle } from "@/components/DarkModeToggle";
+import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
+import { Reveal } from "@/components/Reveal";
 import { profile } from "@/data/profile";
 
 const services = [
@@ -8,18 +8,22 @@ const services = [
     title: "AI & ML development",
     description:
       "RAG systems, agents, classifiers and computer-vision pipelines, delivered as a documented API you can run yourself.",
+    color: "bg-pop-lime",
   },
   {
     title: "Web applications",
     description: "React front ends wired to your models or data, built to be maintained after I hand them over.",
+    color: "bg-pop-pink",
   },
   {
     title: "Data analysis",
     description: "Cleaning, exploring and modelling your data, with a write-up of what it does and doesn't show.",
+    color: "bg-pop-yellow",
   },
   {
     title: "Consultation",
     description: "A call to scope an idea, pick a stack, or sanity-check whether ML is the right tool at all.",
+    color: "bg-pop-sky",
   },
 ];
 
@@ -35,65 +39,52 @@ export default function PaidProjects() {
 
   return (
     <div className="min-h-screen bg-background">
-      <nav className="container-narrow flex h-16 items-center justify-between">
-        <Link
-          to="/"
-          className="inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
-        >
-          <ArrowLeft className="h-4 w-4" />
-          Bilal Imran
-        </Link>
-        <DarkModeToggle />
-      </nav>
+      <Navbar />
 
-      <main className="container-narrow">
-        <header className="pb-16 pt-16 md:pb-24 md:pt-24">
-          <p className="eyebrow">Freelance</p>
-          <h1 className="mt-4 max-w-[18ch] font-serif text-5xl leading-[1.04] md:text-[4.25rem]">
-            Have a project that needs an AI engineer?
+      <main className="container-wide">
+        <header className="pb-16 pt-10 md:pb-24 md:pt-16">
+          <span className="sticker -rotate-3 bg-pop-lime">Freelance</span>
+          <h1 className="mt-6 max-w-[16ch] text-5xl font-extrabold leading-[1.02] md:text-[5rem]">
+            Have a project that needs an <span className="hl">AI engineer?</span>
           </h1>
-          <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-muted-foreground">
-            I take on paid projects in AI, web and data. Tell me what
-            you're trying to build and I'll tell you honestly whether I'm a good fit.
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
+            I take on paid projects in AI, web and data. Tell me what you're trying to build and I'll tell you
+            honestly whether I'm a good fit.
           </p>
-          <a
-            href={mailto}
-            className="mt-10 inline-flex rounded-full bg-foreground px-5 py-2.5 text-sm font-medium text-background transition-opacity hover:opacity-85"
-          >
+          <a href={mailto} className="btn-pop btn-pop-orange mt-9">
             Email me about a project
           </a>
         </header>
 
-        <section className="grid gap-6 border-t border-border py-16 md:grid-cols-[180px_1fr] md:gap-10">
-          <h2 className="font-serif text-3xl leading-none">What I do</h2>
-          <dl className="divide-y divide-border">
-            {services.map((service) => (
-              <div key={service.title} className="grid gap-1 py-5 first:pt-0 sm:grid-cols-[200px_1fr] sm:gap-8">
-                <dt className="font-medium">{service.title}</dt>
-                <dd className="text-[15px] leading-relaxed text-muted-foreground">{service.description}</dd>
-              </div>
+        <section className="pb-16">
+          <h2 className="section-title mb-10">What I do</h2>
+          <div className="grid gap-5 sm:grid-cols-2">
+            {services.map((service, i) => (
+              <Reveal key={service.title} delay={(i % 2) * 0.06}>
+                <div className={`pop-box h-full p-6 ${i % 2 ? "rotate-1" : "-rotate-1"}`}>
+                  <span className={`sticker mb-3 ${service.color}`}>{String(i + 1).padStart(2, "0")}</span>
+                  <h3 className="text-2xl font-extrabold">{service.title}</h3>
+                  <p className="mt-2 leading-relaxed text-muted-foreground">{service.description}</p>
+                </div>
+              </Reveal>
             ))}
-          </dl>
+          </div>
         </section>
 
-        <section className="grid gap-6 border-t border-border py-16 md:grid-cols-[180px_1fr] md:gap-10">
-          <h2 className="font-serif text-3xl leading-none">How it works</h2>
-          <dl className="grid gap-x-8 gap-y-6 sm:grid-cols-2">
+        <section className="pb-24">
+          <h2 className="section-title mb-10">How it works</h2>
+          <dl className="pop-box grid gap-x-8 gap-y-5 bg-pop-yellow p-7 text-onpop sm:grid-cols-2">
             {terms.map((term) => (
               <div key={term.label}>
-                <dt className="eyebrow">{term.label}</dt>
-                <dd className="mt-1 text-[15px]">{term.value}</dd>
+                <dt className="font-mono text-xs uppercase opacity-70">{term.label}</dt>
+                <dd className="mt-1 text-lg font-bold">{term.value}</dd>
               </div>
             ))}
           </dl>
         </section>
       </main>
 
-      <footer className="container-narrow">
-        <p className="border-t border-border py-8 text-sm text-muted-foreground">
-          © {new Date().getFullYear()} {profile.name}
-        </p>
-      </footer>
+      <Footer />
     </div>
   );
 }
